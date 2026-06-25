@@ -12,13 +12,19 @@
 </head>
 <body>
     @php
-        $navItems = [
-            ['label' => 'Home', 'path' => '/', 'match' => '/'],
-            ['label' => 'Prices', 'path' => '/prices', 'match' => 'prices'],
-            ['label' => 'Advice', 'path' => '/advisor', 'match' => 'advisor'],
-            ['label' => 'Planner', 'path' => '/planting-planner', 'match' => 'planting-planner'],
-            ['label' => 'Profile', 'path' => '/settings', 'match' => 'settings'],
-        ];
+        $navItems = auth()->check()
+            ? [
+                ['label' => 'Dashboard', 'path' => route('dashboard'), 'matches' => ['dashboard', 'farmer/dashboard', 'trader/dashboard', 'consumer/dashboard', 'admin/dashboard', 'super-admin/dashboard']],
+                ['label' => 'Prices', 'path' => route('prices'), 'matches' => ['prices']],
+                ['label' => 'Advice', 'path' => route('advisor'), 'matches' => ['advisor']],
+                ['label' => 'Settings', 'path' => route('settings'), 'matches' => ['settings']],
+            ]
+            : [
+                ['label' => 'Home', 'path' => route('home'), 'matches' => ['/']],
+                ['label' => 'Prices', 'path' => route('prices'), 'matches' => ['prices']],
+                ['label' => 'Advice', 'path' => route('advisor'), 'matches' => ['advisor']],
+                ['label' => 'Login', 'path' => route('login'), 'matches' => ['login', 'register']],
+            ];
     @endphp
 
     <div class="app-shell">
@@ -38,6 +44,12 @@
         </header>
 
         <main class="screen-pad py-4">
+            @if (session('status'))
+                <div class="mb-4 rounded-xl border border-outline-variant/70 bg-surface-container-lowest p-3 text-sm font-semibold text-on-surface-variant dark:border-white/10 dark:bg-white/[0.06] dark:text-[#d9ded5]">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             @yield('content')
         </main>
 
@@ -45,13 +57,22 @@
             <div class="flex gap-1">
                 @foreach ($navItems as $item)
                     @php
-                        $active = $item['match'] === '/' ? request()->is('/') : request()->is($item['match']);
+                        $active = collect($item['matches'])->contains(fn ($match) => $match === '/' ? request()->is('/') : request()->is($match));
                     @endphp
                     <a class="bottom-nav-link {{ $active ? 'bottom-nav-link-active' : '' }}" href="{{ $item['path'] }}">
                         <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full {{ $active ? 'bg-current' : 'bg-outline-variant dark:bg-white/20' }}"></span>
                         <span class="truncate">{{ $item['label'] }}</span>
                     </a>
                 @endforeach
+                @auth
+                    <form class="min-w-0 flex-1" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="bottom-nav-link w-full" type="submit">
+                            <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-outline-variant dark:bg-white/20"></span>
+                            <span class="truncate">Logout</span>
+                        </button>
+                    </form>
+                @endauth
             </div>
         </nav>
     </div>

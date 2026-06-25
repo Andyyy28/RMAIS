@@ -8,7 +8,7 @@ class PhaseOneRoutesTest extends TestCase
 {
     public function test_phase_one_routes_render_successfully(): void
     {
-        foreach (['/', '/onboarding', '/prices', '/advisor', '/planting-planner', '/consumer-comparison', '/dashboard', '/settings'] as $path) {
+        foreach (['/', '/onboarding', '/prices', '/advisor', '/login', '/register'] as $path) {
             $this->get($path)
                 ->assertOk()
                 ->assertSee('RMAIS')

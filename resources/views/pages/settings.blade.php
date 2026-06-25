@@ -5,7 +5,7 @@
         <div>
             <p class="text-sm font-semibold text-secondary">Settings</p>
             <h1 class="mt-1 text-2xl font-bold">Profile preferences</h1>
-            <p class="mt-2 text-sm text-on-surface-variant dark:text-[#c7cdc3]">Static Phase 1 settings. Account features start after authentication is approved.</p>
+            <p class="mt-2 text-sm text-on-surface-variant dark:text-[#c7cdc3]">Account preferences for the current RMAIS demo user.</p>
         </div>
 
         <section class="section-card space-y-4">

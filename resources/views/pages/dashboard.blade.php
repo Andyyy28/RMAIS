@@ -5,7 +5,7 @@
         <div>
             <p class="text-sm font-semibold text-secondary">Farmer Dashboard</p>
             <h1 class="mt-1 text-2xl font-bold">Today's rice signals</h1>
-            <p class="mt-2 text-sm text-on-surface-variant dark:text-[#c7cdc3]">Phase 1 dashboard preview with static data. Login and saved advisory history start in Phase 2.</p>
+            <p class="mt-2 text-sm text-on-surface-variant dark:text-[#c7cdc3]">Phase 2 farmer access placeholder with static rice and palay signals for M'lang.</p>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
