@@ -1,0 +1,19 @@
+{
+    "name": "RMAIS - Rice Market and Advisory",
+    "short_name": "RMAIS",
+    "description": "Mobile-first rice and palay price monitoring for M'lang, North Cotabato.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#fcf9f8",
+    "theme_color": "#00450d",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0c5216",
+                        "secondary-container": "#fcab28",
+                        "inverse-primary": "#91d78a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#835400",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#694300",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1b5e20",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "outline-variant": "#c0c9bb",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#ffddb5",
+                        "on-primary-container": "#90d689",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002203",
+                        "on-tertiary-container": "#77db76",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "outline": "#717a6d",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#41493e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-container": "#006017",
+                        "tertiary-fixed": "#94f990",
+                        "on-background": "#1b1b1c",
+                        "surface-variant": "#e5e2e1",
+                        "surface-tint": "#2a6b2c",
+                        "on-surface": "#1b1b1c",
+                        "tertiary": "#00460e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb957",
+                        "primary": "#00450d",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#acf4a4",
+                        "surface": "#fcf9f8",
+                        "primary-fixed-dim": "#91d78a",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-padding": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-md py-sm w-full fixed top-0 z-50 bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-inverse-primary">RMAIS M'lang</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto mt-[60px] mb-[70px] p-container-padding bg-background">
+<!-- Profile Header Card -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-outline-variant mb-lg flex items-center gap-md">
+<img class="w-16 h-16 rounded-full object-cover" data-alt="A professional close-up portrait of an agricultural professional, brightly lit with natural sunlight, wearing smart casual attire. The background is a slightly blurred, lush green rice field, conveying expertise and connection to the land. The mood is confident and welcoming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw8jHnTM4EgTuQVVsairnvAW9cOmV0kzti_e5OEwHYidz_qdI4Mr3cSr2VA7laVu3ZAfE-NMRI3KU2_0AoBI9hF066GoGnWG-zgCCLWxnhQXFT0oTc8AmCo6mxXBxqrPjfpOsMlBjtH3cPnBO1FqxlMirQP9tL4LRjsrdQtD5VPxXyUlAFSUc1riY6mjhOW3Yvu6o0PdHdCQsEFnK4rrK4O84d_GOw301bfvaa5N6A_WYMJ30fyDLEuNjDDp9v3K_1uCVEryX5eRLN">
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Juan Dela Cruz</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Farmer • M'lang, Cotabato</p>
+</div>
+</section>
+<!-- Settings List -->
+<section class="flex flex-col gap-sm">
+<!-- Appearance Toggle -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+<span class="font-label-lg text-label-lg text-on-surface">Dark Mode</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Saved Preferences -->
+<button class="bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-outline-variant flex justify-between items-center hover:bg-surface-container-low transition-colors w-full text-left">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+<span class="font-label-lg text-label-lg text-on-surface">Saved Rice Preferences</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Notification Settings -->
+<button class="bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-outline-variant flex justify-between items-center hover:bg-surface-container-low transition-colors w-full text-left">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="font-label-lg text-label-lg text-on-surface">Notification Settings</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Language -->
+<button class="bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-outline-variant flex justify-between items-center hover:bg-surface-container-low transition-colors w-full text-left">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+<span class="font-label-lg text-label-lg text-on-surface">Language</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-on-surface-variant">English</span>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</button>
+<!-- Logout -->
+<button class="mt-lg bg-surface-container-lowest rounded-xl p-md shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-error-container flex justify-center items-center gap-sm hover:bg-error-container transition-colors w-full text-error">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-lg text-label-lg">Logout</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-container-padding py-2 pb-safe bg-surface dark:bg-surface-dim shadow-[0_-2px_8px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md mt-1">Prices</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-md text-label-md mt-1">Advisor</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">grass</span>
+<span class="font-label-md text-label-md mt-1">Plant</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-tertiary-container text-on-primary-container dark:text-on-tertiary-container rounded-full px-4 py-1 active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</a>
+</nav>
+</body></html>

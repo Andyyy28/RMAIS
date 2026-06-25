@@ -1,0 +1,298 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Admin Price Entry Form</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0c5216",
+                        "secondary-container": "#fcab28",
+                        "inverse-primary": "#91d78a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#835400",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#694300",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1b5e20",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "outline-variant": "#c0c9bb",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#ffddb5",
+                        "on-primary-container": "#90d689",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002203",
+                        "on-tertiary-container": "#77db76",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "outline": "#717a6d",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#41493e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-container": "#006017",
+                        "tertiary-fixed": "#94f990",
+                        "on-background": "#1b1b1c",
+                        "surface-variant": "#e5e2e1",
+                        "surface-tint": "#2a6b2c",
+                        "on-surface": "#1b1b1c",
+                        "tertiary": "#00460e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb957",
+                        "primary": "#00450d",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#acf4a4",
+                        "surface": "#fcf9f8",
+                        "primary-fixed-dim": "#91d78a",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-padding": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles matching the design system guidelines */
+        body {
+            background-color: #F7F8FA; /* Defaulting to light surface bright from config logically */
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom shadow for cards */
+        .card-shadow {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Input field custom styles */
+        .input-base {
+            @apply block w-full border-0 border-b-2 border-outline-variant bg-surface-container-low focus:border-primary focus:ring-0 px-md py-sm rounded-t-lg transition-colors duration-200 text-on-surface font-body-lg text-body-lg;
+        }
+        
+        .label-base {
+            @apply block font-label-md text-label-md text-on-surface-variant mb-xs;
+        }
+
+        .select-base {
+            @apply block w-full border-0 border-b-2 border-outline-variant bg-surface-container-low focus:border-primary focus:ring-0 px-md py-sm rounded-t-lg transition-colors duration-200 text-on-surface font-body-lg text-body-lg appearance-none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23717a6d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-lg text-body-lg text-on-surface antialiased h-full flex flex-col md:hidden">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm flex justify-between items-center px-md py-sm w-full sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">Add Price Entry</h1>
+</div>
+<button aria-label="Save draft" class="p-2 -mr-2 rounded-full hover:bg-surface-container-high transition-colors flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">save</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pb-[100px]"> <!-- Extra padding for fixed bottom bar -->
+<div class="p-container-padding flex flex-col gap-lg max-w-lg mx-auto">
+<!-- Context Section -->
+<section class="bg-white rounded-xl card-shadow p-md flex flex-col gap-md">
+<h2 class="font-title-lg text-title-lg text-on-surface border-b border-outline-variant pb-xs">Source Details</h2>
+<div>
+<label class="label-base" for="entry-date">Collection Date</label>
+<input class="input-base" id="entry-date" type="date" value="2023-10-27">
+</div>
+<div>
+<label class="label-base" for="source-name">Source Name</label>
+<input class="input-base" id="source-name" placeholder="e.g., Reyes Rice Mill" type="text">
+</div>
+<div>
+<label class="label-base" for="source-type">Source Type</label>
+<select class="select-base" id="source-type">
+<option disabled="" selected="" value="">Select type</option>
+<option value="mill">Rice Mill</option>
+<option value="trader">Trader</option>
+<option value="retail">Retail</option>
+<option value="observed">Observed</option>
+</select>
+</div>
+<div>
+<label class="label-base" for="barangay">Barangay</label>
+<select class="select-base" id="barangay">
+<option disabled="" selected="" value="">Select location</option>
+<option value="brgy1">Bagontapay</option>
+<option value="brgy2">Bialong</option>
+<option value="brgy3">Buayan</option>
+<option value="brgy4">Poblacion</option>
+</select>
+</div>
+</section>
+<!-- Product & Price Section -->
+<section class="bg-white rounded-xl card-shadow p-md flex flex-col gap-md border-l-4 border-l-secondary-container">
+<h2 class="font-title-lg text-title-lg text-on-surface border-b border-outline-variant pb-xs flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-container">grass</span>
+                    Commodity Data
+                </h2>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="label-base" for="rice-category">Category</label>
+<select class="select-base" id="rice-category">
+<option selected="" value="palay">Palay</option>
+<option value="milled">Milled Rice</option>
+</select>
+</div>
+<div>
+<label class="label-base" for="rice-variety">Variety</label>
+<select class="select-base" id="rice-variety">
+<option disabled="" selected="" value="">Select...</option>
+<option value="rc18">RC 18</option>
+<option value="rc160">RC 160</option>
+<option value="rc222">RC 222</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+<div>
+<label class="label-base" for="condition">Condition</label>
+<div class="flex flex-wrap gap-sm mt-xs">
+<label class="relative flex items-center p-2 rounded-full border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input checked="" class="sr-only" name="condition" type="radio" value="fresh">
+<span class="font-label-lg text-label-lg px-sm">Fresh</span>
+</label>
+<label class="relative flex items-center p-2 rounded-full border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="sr-only" name="condition" type="radio" value="dry">
+<span class="font-label-lg text-label-lg px-sm">Dry</span>
+</label>
+<label class="relative flex items-center p-2 rounded-full border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="sr-only" name="condition" type="radio" value="milled">
+<span class="font-label-lg text-label-lg px-sm">Well-milled</span>
+</label>
+<label class="relative flex items-center p-2 rounded-full border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:bg-primary-container has-[:checked]:text-on-primary-container has-[:checked]:border-primary-container">
+<input class="sr-only" name="condition" type="radio" value="mixed">
+<span class="font-label-lg text-label-lg px-sm">Mixed</span>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="label-base" for="price">Price (PHP)</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant">₱</span>
+<input class="input-base pl-8" id="price" min="0" placeholder="0.00" step="0.01" type="number">
+</div>
+</div>
+<div>
+<label class="label-base" for="unit">Unit</label>
+<select class="select-base" id="unit">
+<option selected="" value="kg">Per kg</option>
+<option value="sack50">50kg Sack</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Verification Section -->
+<section class="bg-white rounded-xl card-shadow p-md flex flex-col gap-md">
+<h2 class="font-title-lg text-title-lg text-on-surface border-b border-outline-variant pb-xs">Verification</h2>
+<div>
+<label class="label-base" for="collection-method">Method of Collection</label>
+<select class="select-base" id="collection-method">
+<option selected="" value="observed">Personally Observed</option>
+<option value="seller">Seller-reported</option>
+<option value="confirmed">Admin-confirmed</option>
+</select>
+</div>
+<div>
+<label class="label-base">Proof (Optional)</label>
+<div class="mt-xs flex justify-center rounded-lg border border-dashed border-outline px-6 py-6 bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-outline text-display-lg mb-2">add_a_photo</span>
+<div class="flex font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary">Upload a file</span>
+<p class="pl-1 text-on-surface-variant">or take a photo</p>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">PNG, JPG up to 10MB</p>
+</div>
+</div>
+</div>
+<div>
+<label class="label-base" for="remarks">Remarks</label>
+<textarea class="input-base resize-none" id="remarks" placeholder="Add any contextual notes here..." rows="3"></textarea>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Action Bar (Contextual FAB equivalent for form) -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant px-container-padding py-md pb-safe shadow-[0_-2px_8px_rgba(0,0,0,0.05)]">
+<div class="flex gap-md max-w-lg mx-auto">
+<button class="flex-1 py-3 px-4 rounded-full border border-primary text-primary font-label-lg text-label-lg hover:bg-surface-container-low transition-colors text-center font-semibold">
+                Save as Draft
+            </button>
+<button class="flex-1 py-3 px-4 rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg hover:bg-primary transition-colors hover:text-white text-center font-semibold shadow-sm">
+                Publish Entry
+            </button>
+</div>
+</div>
+</body></html>

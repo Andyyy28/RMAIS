@@ -1,0 +1,289 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Smart Advisor - RMAIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0c5216",
+                        "secondary-container": "#fcab28",
+                        "inverse-primary": "#91d78a",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#835400",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#694300",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1b5e20",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "outline-variant": "#c0c9bb",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#ffddb5",
+                        "on-primary-container": "#90d689",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002203",
+                        "on-tertiary-container": "#77db76",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "outline": "#717a6d",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#41493e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-container": "#006017",
+                        "tertiary-fixed": "#94f990",
+                        "on-background": "#1b1b1c",
+                        "surface-variant": "#e5e2e1",
+                        "surface-tint": "#2a6b2c",
+                        "on-surface": "#1b1b1c",
+                        "tertiary": "#00460e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb957",
+                        "primary": "#00450d",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#acf4a4",
+                        "surface": "#fcf9f8",
+                        "primary-fixed-dim": "#91d78a",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-padding": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+        
+        /* Subtle pulse for AI badge */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .ai-pulse {
+            animation: pulse-soft 3s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased md:hidden pb-safe min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-md py-sm w-full fixed top-0 z-50 pt-safe">
+<button aria-label="Menu" class="text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors w-12 h-12 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-inverse-primary">RMAIS M'lang</h1>
+<button aria-label="Profile" class="text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors w-12 h-12 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[72px] mb-[80px] px-md py-lg overflow-y-auto space-y-lg">
+<!-- Page Header -->
+<div class="space-y-sm">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-secondary-container ai-pulse" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">Smart Advisor</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure your scenario for tailored, data-driven recommendations.</p>
+</div>
+<!-- Input Section (Glassmorphic vibe card) -->
+<section class="bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.05)] rounded-xl p-md border border-surface-variant space-y-md relative overflow-hidden">
+<!-- Decorative gradient orb -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary-fixed opacity-20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Rice Type Select -->
+<div class="space-y-xs relative z-10">
+<label class="font-label-md text-label-md text-on-surface-variant block" for="rice-type">Rice Type</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-surface-tint focus:ring-0 rounded-t-DEFAULT px-md py-sm font-body-md text-body-md text-on-surface appearance-none pr-10 transition-colors" id="rice-type">
+<option>Premium Well-Milled</option>
+<option>Regular Milled</option>
+<option>Dry Palay</option>
+<option>Wet Palay</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+</div>
+<!-- User Type Selector (Segmented Control) -->
+<div class="space-y-xs relative z-10">
+<label class="font-label-md text-label-md text-on-surface-variant block">I am a...</label>
+<div class="flex bg-surface-container-high rounded-lg p-1">
+<button aria-pressed="true" class="flex-1 bg-surface-container-lowest shadow-sm rounded-md py-sm font-label-md text-label-md text-primary font-medium transition-all">Farmer</button>
+<button aria-pressed="false" class="flex-1 py-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Trader</button>
+<button aria-pressed="false" class="flex-1 py-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Consumer</button>
+</div>
+</div>
+<!-- Urgency Toggle -->
+<div class="flex items-center justify-between relative z-10 pt-sm border-t border-surface-variant">
+<div class="space-y-1">
+<label class="font-label-lg text-label-lg text-on-surface block">Need to sell now?</label>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px]">Affects liquidity vs margin advice</p>
+</div>
+<!-- Custom Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-surface-tint"></div>
+</label>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-sm px-md rounded-lg flex items-center justify-center space-x-2 mt-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Refresh Advice</span>
+</button>
+</section>
+<!-- Result Card: Advisory Insight Box -->
+<section class="bg-[#FFFDF5] border-l-4 border-secondary-container shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded-r-xl rounded-l-sm p-md space-y-md relative overflow-hidden">
+<!-- Header row -->
+<div class="flex justify-between items-start">
+<div class="flex items-center space-x-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">AI Recommendation</h3>
+<p class="font-title-lg text-title-lg text-on-surface">Compare Buyers First</p>
+</div>
+</div>
+<!-- Price Tag -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg px-2 py-1 text-right shadow-sm">
+<span class="block font-label-md text-label-md text-on-surface-variant text-[10px]">Current Avg</span>
+<span class="font-headline-md text-headline-md-mobile text-primary">₱23.50<span class="text-[12px] text-on-surface-variant font-normal">/kg</span></span>
+</div>
+</div>
+<!-- Bento Grid Details -->
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low rounded-lg p-sm border border-surface-variant flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span> Risk Level
+                    </span>
+<span class="font-label-lg text-label-lg text-secondary-container mt-1">Medium</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm border border-surface-variant flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span> Confidence
+                    </span>
+<span class="font-label-lg text-label-lg text-surface-tint mt-1">High</span>
+</div>
+</div>
+<!-- Reason -->
+<div class="bg-white/60 rounded-lg p-sm italic border-l-2 border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface">"Some buyers offer higher prices today due to regional shortages. Do not lock in immediately."</p>
+</div>
+<!-- Action Steps -->
+<div class="space-y-sm">
+<h4 class="font-label-lg text-label-lg text-on-surface">Action Steps</h4>
+<ul class="space-y-2">
+<li class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-surface-tint mt-[2px] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Check nearby rice mill prices on the Home dashboard.</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-surface-tint mt-[2px] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Compare at least 2 buyers before committing.</span>
+</li>
+<li class="flex items-start space-x-2">
+<span class="material-symbols-outlined text-surface-tint mt-[2px] text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Sell only if price is above average (₱23.50/kg).</span>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface-dim shadow-[0_-2px_8px_rgba(0,0,0,0.05)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-container-padding py-2 pb-safe rounded-t-xl">
+<a aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a aria-label="Prices" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md mt-1">Prices</span>
+</a>
+<!-- Active Tab: Advisor -->
+<a aria-label="Advisor" class="flex flex-col items-center justify-center bg-primary-container dark:bg-tertiary-container text-on-primary-container dark:text-on-tertiary-container rounded-full px-4 py-1 scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md mt-1">Advisor</span>
+</a>
+<a aria-label="Plant" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="grass">grass</span>
+<span class="font-label-md text-label-md mt-1">Plant</span>
+</a>
+<a aria-label="Account" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for segmented control
+        document.querySelectorAll('.flex.bg-surface-container-high button').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary', 'font-medium');
+                    btn.classList.add('text-on-surface-variant');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary', 'font-medium');
+                this.classList.remove('text-on-surface-variant');
+                this.setAttribute('aria-pressed', 'true');
+            });
+        });
+    </script>
+</body></html>
